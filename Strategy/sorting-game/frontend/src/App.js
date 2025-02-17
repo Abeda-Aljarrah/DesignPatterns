@@ -35,7 +35,7 @@ export default function SortingGame() {
 
   // Fetch data from PHP
   useEffect(() => {
-    axios.get("http://localhost/Strategy/sorting-game/backend/getData.php")
+    axios.get("http://localhost/DesignPatterns/Strategy/sorting-game/backend/getData.php")
       .then(response => {
         setItems(response.data);
         setLoading(false);
@@ -56,7 +56,7 @@ export default function SortingGame() {
   };
 
   const checkSorting = () => {
-    axios.post("http://localhost/Strategy/sorting-game/backend/index.php", {
+    axios.post("http://localhost/DesignPatterns/Strategy/sorting-game/backend/index.php", {
       items: items, // Send sorted items
       sortType: sortType || "alphabetical"
     })
