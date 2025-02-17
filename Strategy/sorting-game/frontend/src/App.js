@@ -88,8 +88,12 @@ export default function SortingGame() {
           <div className="mb-3 mt-4">
             <label className="form-label fw-bold me-3">Select Sorting Type:</label>
             <select className="form-select w-auto d-inline-block" value={sortType} onChange={(e) => setSortType(e.target.value)}>
-              <option value="alphabetical">Alphabetical</option>
-              <option value="reverse">Reverse Alphabetical</option>
+              <option value="alphabetical">Alphabetical (A → Z)</option>
+              <option value="reverse">Reverse Alphabetical (Z → A)</option>
+              <option value="category">By Category (Fruits → Vegetables)</option>
+              <option value="reverse-category">Reverse Category (Vegetables → Fruits)</option>
+              <option value="length">By Length (Shortest → Longest)</option>
+              <option value="reverse-length">By Length (Longest → Shortest)</option>
             </select>
           </div>
 

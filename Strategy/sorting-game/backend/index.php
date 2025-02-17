@@ -14,10 +14,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once "sortingStrategy/Context.php";
 require_once "sortingStrategy/ConcreteSortingAlphabetical.php";
 require_once "sortingStrategy/ConcreteSortingReverseAlphabetical.php";
+require_once "sortingStrategy/ConcreteSortingCategory.php";
+require_once "sortingStrategy/ConcreteSortingReverseCategory.php";
+require_once "sortingStrategy/ConcreteSortingLength.php";
+require_once "sortingStrategy/ConcreteSortingReverseLength.php";
 
 use SortingGame\Strategies\Context;
 use SortingGame\Strategies\ConcreteSortingAlphabetical;
 use SortingGame\Strategies\ConcreteSortingReverseAlphabetical;
+use SortingGame\Strategies\ConcreteSortingCategory;
+use SortingGame\Strategies\ConcreteSortingReverseCategory;
+use SortingGame\Strategies\ConcreteSortingLength;
+use SortingGame\Strategies\ConcreteSortingReverseLength;
 
 // Get the JSON input from Axios
 $input = json_decode(file_get_contents("php://input"), true);
@@ -30,6 +38,10 @@ $sortType = $input['sortType'] ?? 'alphabetical';
 $sortingStrategy = match ($sortType) {
     'alphabetical' => new ConcreteSortingAlphabetical(),
     'reverse' => new ConcreteSortingReverseAlphabetical(),
+    'category' => new ConcreteSortingCategory(),
+    'reverse-category' => new ConcreteSortingReverseCategory(),
+    'length' => new ConcreteSortingLength(),
+    'reverse-length' => new ConcreteSortingReverseLength(),
     default => throw new Exception("Invalid sorting type"),
 };
 
