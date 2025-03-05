@@ -7,6 +7,8 @@ use FactoryMethod\Periods\YearlyPeriods\OnceTwoMonths;
 use FactoryMethod\Periods\YearlyPeriods\TwiceAMonth;
 use FactoryMethod\Periods\Period;
 
+use DateTime;
+
 use FactoryMethod\Plans\PlanFactory;
 
 class YearlyPlan extends PlanFactory
@@ -32,5 +34,12 @@ class YearlyPlan extends PlanFactory
         }
 
         throw new \Exception('The requested period does not exist');
+    }
+
+    public function setEndDate($start_date): string
+    {
+        $date = new DateTime($start_date);
+        $date->modify('+360 days');
+        return $date->format('Y-m-d');
     }
 }

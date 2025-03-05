@@ -21,7 +21,7 @@ class OnceAWeek implements Period
         return $this->plan_fees + 15.00;
     }
 
-    public function setEndDate(): string
+    public function nextDeliveryDate(): string
     {
         $date = new DateTime($this->start_date);
         $date->modify('+7 days'); // Add 7 days to represent "Once a Week"

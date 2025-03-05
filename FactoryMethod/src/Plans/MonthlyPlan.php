@@ -7,6 +7,8 @@ use FactoryMethod\Periods\MonthlyPeriods\TwiceAMonth;
 use FactoryMethod\Periods\MonthlyPeriods\TwiceAWeek;
 use FactoryMethod\Periods\Period;
 
+use DateTime;
+
 use FactoryMethod\Plans\PlanFactory;
 
 class MonthlyPlan extends PlanFactory
@@ -32,5 +34,12 @@ class MonthlyPlan extends PlanFactory
         }
 
         throw new \Exception('The requested period does not exist');
+    }
+
+    public function setEndDate($start_date): string
+    {
+        $date = new DateTime($start_date);
+        $date->modify('+30 days');
+        return $date->format('Y-m-d');
     }
 }

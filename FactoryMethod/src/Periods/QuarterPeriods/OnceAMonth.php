@@ -22,7 +22,7 @@ class OnceAMonth implements Period
         return $this->plan_fees + 40.00;
     }
 
-    public function setEndDate(): string
+    public function nextDeliveryDate(): string
     {
         $date = new DateTime($this->start_date);
         $date->modify('+30 days'); 

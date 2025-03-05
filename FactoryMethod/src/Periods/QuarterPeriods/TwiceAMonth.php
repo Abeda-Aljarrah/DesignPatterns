@@ -22,7 +22,7 @@ class TwiceAMonth implements Period
         return $this->plan_fees + 10.00;
     }
 
-    public function setEndDate(): string
+    public function nextDeliveryDate(): string
     {
         $date = new DateTime($this->start_date);
         $date->modify('+15 days'); // Add 15 days to represent twice a month

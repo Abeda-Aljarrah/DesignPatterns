@@ -33,9 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $period = $plan->getPeriod($periodId, $startDate);
+        $endDate = $plan->setEndDate($startDate);
         $price = $period->calculatePrice();
-        $endDate = $period->setEndDate();
-        echo "Price: " . $price . " | End Date: " . $endDate;
+        $nextDeliveryDate = $period->nextDeliveryDate();
+
+        echo "Price: " . $price . " | End Date: " . $endDate. " | Next Delivery Date: " . $nextDeliveryDate;
     } catch (\Exception $e) {
         echo "Error: " . $e->getMessage();
     }

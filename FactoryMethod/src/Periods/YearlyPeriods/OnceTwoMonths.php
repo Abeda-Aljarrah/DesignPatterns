@@ -21,7 +21,7 @@ class OnceTwoMonths implements Period
         return $this->plan_fees + 10.00; 
     }
 
-    public function setEndDate(): string
+    public function nextDeliveryDate(): string
     {
         $date = new DateTime($this->start_date);
         $date->modify('+60 days'); // Add 60 days to represent "Once Every Two Months"

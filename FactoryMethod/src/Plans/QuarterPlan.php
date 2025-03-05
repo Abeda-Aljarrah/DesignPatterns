@@ -7,6 +7,8 @@ use FactoryMethod\Periods\QuarterPeriods\OnceAMonth;
 use FactoryMethod\Periods\QuarterPeriods\TwiceAMonth;
 use FactoryMethod\Periods\Period;
 
+use DateTime;
+
 use FactoryMethod\Plans\PlanFactory;
 
 class QuarterPlan extends PlanFactory
@@ -32,5 +34,12 @@ class QuarterPlan extends PlanFactory
         }
 
         throw new \Exception('The requested period does not exist');
+    }
+
+    public function setEndDate($start_date): string
+    {
+        $date = new DateTime($start_date);
+        $date->modify('+90 days');
+        return $date->format('Y-m-d');
     }
 }
